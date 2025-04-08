@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elián Hernández - IT Support Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #002851;
+            --accent: #FF6B00;
+            --dark: #1a1a1a;
+            --light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 40, 81, 0.9), rgba(0, 40, 81, 0.9)),
+                        url('assets/ANIME_TEAM_CTS.png') center/cover fixed;
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .company-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 120px;
+            animation: logoFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.3));
+            z-index: 100;
+        }
+
+        .profile-header {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            position: relative;
+        }
+
+        .avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--light);
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.4);
+            margin-bottom: 2rem;
+            animation: avatarFloat 4s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+
+        .avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .profile-info {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .name {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .position {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .department {
+            color: #cccccc;
+            font-size: 1.2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s;
+            animation: cardAppear 1s ease 0.6s both;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 1.5rem 0;
+            padding: 1.2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .contact-item:hover {
+            transform: translateX(20px);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+            animation: iconBounce 1s ease;
+        }
+
+        .contact-details {
+            flex: 1;
+            margin-left: 1.5rem;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: var(--light);
+        }
+
+        .email-btn {
+            background: var(--accent);
+            color: var(--light);
+        }
+
+        .social-section {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(0);
+            transition: 0.3s;
+        }
+
+        .social-link:hover::before {
+            transform: scale(1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .linkedin { background: #0077B5; }
+        .github { background: #333; }
+        .twitter { background: #1DA1F2; }
+        .instagram { background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        .website { background: var(--primary); }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid var(--accent);
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        /* Animaciones */
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .company-logo {
+                width: 80px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .avatar {
+                width: 180px;
+                height: 180px;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .position {
+                font-size: 1.2rem;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .contact-details {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="assets/logo.png" alt="Logo" class="company-logo">
+
+    <div class="container">
+        <header class="profile-header">
+            <img src="assets/avatar.jpg" alt="Elián Hernández" class="avatar">
+            <div class="profile-info">
+                <h1 class="name">Elián Hernández Olarte</h1>
+                <p class="position">IT Support Engineer</p>
+                <p class="department">TI</p>
+            </div>
+        </header>
+
+        <div class="contact-card">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/+5219934613338" class="btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Enviar mensaje</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Correo Electrónico</h3>
+                    <a href="mailto:soportevh@nucleoesepec.com.mx" class="btn email-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>Enviar Correo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-section">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/nucleosepec/" class="social-link linkedin" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/JernelOlart" class="social-link github" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/Nucleo_Sepec" class="social-link twitter" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/nucleo_sepec/" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.nucleosepec.com.mx/" class="social-link website" target="_blank">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Núcleo Sepec. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Efecto de interacción con el avatar
+        const avatar = document.querySelector('.avatar');
+        avatar.addEventListener('mousemove', (e) => {
+            const x = e.pageX - avatar.offsetLeft;
+            const y = e.pageY - avatar.offsetTop;
+
+            avatar.style.transform = `
+                rotate3d(${y/100}, ${x/100}, 0, 10deg)
+                scale(1.05)
+            `;
+        });
+
+        avatar.addEventListener('mouseleave', () => {
+            avatar.style.transform = 'scale(1)';
+        });
+
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.contact-item, .social-link').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
